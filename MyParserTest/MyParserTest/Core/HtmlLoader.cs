@@ -15,10 +15,9 @@ namespace MyParserTest.Core
             this.url = $"{settings.BaseUrl}/{settings.Prefix}/";
         }
 
-        public async Task<string> GetSourceByPageId(int id)
+        public async Task<string> GetSourceByPageId()
         {
-            var currentUrl = url.Replace("{CurrentId}",id.ToString());
-            var response = await client.GetAsync(currentUrl);
+            var response = await client.GetAsync(url);
             string sourse = null;
 
 

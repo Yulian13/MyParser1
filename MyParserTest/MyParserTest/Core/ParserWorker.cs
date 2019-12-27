@@ -50,7 +50,6 @@ namespace MyParserTest.Core
         #endregion
 
         public event Action<object, T> OnNewData;
-        public event Action<object> OnCompleted;
 
         public ParserWorker(IParser<T> parser)
         {
@@ -59,7 +58,7 @@ namespace MyParserTest.Core
 
         public ParserWorker(IParser<T> parser, IParserSettings parserSettings) : this(parser)
         {
-            this.parserSettings = parserSettings;
+            this.Settings = parserSettings;
         }
 
         public void Start()
@@ -75,25 +74,20 @@ namespace MyParserTest.Core
 
         private async void Worker()
         {
-            for(int i = Settings.StartPoint; i < Settings.EndPoint; i++)
+            if (!isActive)
             {
-                if (!isActive)
-                {
-                    OnCompleted?.Invoke(this);
-                    return;
-                }
-
-                var sourse = await loader.GetSourceByPageId(i);
-                var domParser = new HtmlParser();
-
-                var document = await domParser.ParseDocumentAsync(sourse);
-
-                var result = parser.Parser(document);
-
-                OnNewData?.Invoke(this, result);
+                return;
             }
 
-            OnCompleted?.Invoke(this);
+            var sourse = await loader.GetSourceByPageId();
+            var domParser = new HtmlParser();
+
+            var document = await domParser.ParseDocumentAsync(sourse);
+
+            var result = parser.Parser(document);
+
+            OnNewData?.Invoke(this, result);
+
             isActive = false;
         }
     }

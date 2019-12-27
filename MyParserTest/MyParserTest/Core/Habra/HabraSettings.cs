@@ -2,18 +2,14 @@
 {
     class HabraSettings : IParserSettings
     {
-        public HabraSettings(int startPoint, int endPoint )
+        public HabraSettings(string baseUrl, string prefix)
         {
-            StartPoint = startPoint;
-            EndPoint = endPoint;
+            BaseUrl = baseUrl;
+            Prefix = prefix;
         }
 
-        public string BaseUrl { get; set; } = "https://habrahabr.ru";
+        public string BaseUrl { get; set; }
 
-        public string Prefix { get; set; } = "page{CurrentId}";
-
-        public int StartPoint { get; set; }
-
-        public int EndPoint { get; set; }
+        public string Prefix { get; set; }
     }
 }
