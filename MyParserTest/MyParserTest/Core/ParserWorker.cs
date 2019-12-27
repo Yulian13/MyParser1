@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace ParserTest.Core
+namespace MyParserTest.Core
 {
     class ParserWorker<T> where T : class
     {

@@ -1,4 +1,4 @@
-﻿namespace ParserTest.Core.Habra
+﻿namespace MyParserTest.Core.Habra
 {
     class HabraSettings : IParserSettings
     {

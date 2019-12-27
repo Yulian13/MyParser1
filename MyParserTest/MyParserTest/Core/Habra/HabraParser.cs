@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ParserTest.Core.Habra
+namespace MyParserTest.Core.Habra
 {
     class HabraParser : IParser<string[]>
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using AngleSharp.Html.Dom;
 
-namespace ParserTest.Core
+namespace MyParserTest.Core
 {
     interface IParser<T> where T : class
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ParserTest.Core
+namespace MyParserTest.Core
 {
     interface IParserSettings
     {
